@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+  <title>Distance Calculator</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    body{
+      
+      font-family: "Sofia", sans-serif;
+      width: 900px;
+      height: 1200px;
+      margin-left: 200px;
+      font-size: large;
+      font-weight: 200;
+    }
+    .card{
+      max-width: 800px;
+      border-radius: 20px;
+      margin-top: 50px;
+      
+      font-family: "Sofia", sans-serif;
+      margin-right: auto;
+    margin-left: auto;
+    
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+   
+    border-radius: 5px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+
+    }
+
+    #map {
+      height: 300px;
+      width:100%;
+      margin-bottom: 20px;
+    }
+    #images{
+      height: 300px;
+      width:100%;
+    }
+
+    h1{
+      text-align: center;
+      color:rgb(12, 12, 12);
+    }
+    p{
+      color:rgb(12, 12, 12);
+      font-family: "Sofia", sans-serif;
+      font-size: 20px;
+    }
+    #distance-result{
+      color: rgba(19, 19, 19, 0.797);
+      text-align: center;
+    }
+    #origin{
+      border: 2px solid rgb(17, 17, 17);
+      border-radius: 25px;
+      margin-left: 30px;
+      width: 700px;
+      padding: 20px;
+    }
+    #destination{
+      border: 2px solid rgb(39, 134, 172);
+
+      border-radius: 25px;
+      margin-left: 30px;
+      width: 700px;
+      padding: 20px;
+    }
+    label{
+      font-size: 20px;
+      font-family: "Sofia", sans-serif;
+      
+
+    }
+    
+    body{background-image: url("d.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-size:100% 100%;
+  color: black;
+  font-family: "Sofia", sans-serif;
+}
+  </style>
+  <!-- Hotjar Tracking Code for https://pujitha.co/ -->
+<script>
+  (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:3574004,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T4C9YHZYLJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T4C9YHZYLJ');
+</script>
+</head>
+
+<body>
+    
+  <div class="card">
+    <h1>Distance between two locations</h1>
+    <marquee width="100%" direction="right" height="100px"><p>
+      This App will help you to calculate your travelling distance
+  </p></marquee>
+    <form id="distance-form">
+      <div class="form-group">
+        <label for="origin"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-record-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg>
+          From Location:</label>
+        <input type="text" id="origin" class="form-control" placeholder="Enter origin location" required>
+      </div>
+      <center><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+      </svg></center>
+      <div class="form-group">
+        <label for="destination"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+        </svg>
+          Destination Location:</label>
+        <input type="text" id="destination" class="form-control" placeholder="Enter destination location" required>
+      </div>
+      <center><button class="btn btn-primary btn-lg" id="w">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-sign-no-right-turn-fill" viewBox="0 0 16 16">
+            <path d="M14 13.292A8 8 0 0 0 2.707 2l4.097 4.098C7.025 6.034 7.259 6 7.5 6H9V4.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L9.41 8.658a.265.265 0 0 1-.026.02L14 13.291Zm-.708.708A8 8 0 0 1 2 2.707l3.885 3.884A2.495 2.495 0 0 0 5 8.5V11h1V8.5c0-.489.234-.923.596-1.197l6.696 6.696Z"/>
+            <path d="M7.707 7 9 8.293V7H7.707Z"/>
+          </svg>
+    </button></center>
+    </form>
+    <div id="distance-result"class="l shadow-lg l-primary"></div>
+    <div id="map"></div>
+    <div id="images" class="row justify-content-center mt-4"></div><br><br>
+    <a href="home.html"><center><button class="btn btn-primary" id="home">Log Out</button></center></a>
+  </div>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxACrlXZI3XbPbp-lcKjbfC7j8EONEu4Q&libraries=places"></script>
+
+  <script>
+    // Function to calculate distance using Google Maps API
+    let input1=document.getElementById('origin')
+    let input2=document.getElementById('destination')
+
+
+    let automcomplete1=new google.maps.places.Autocomplete(input1)
+    let automcomplete2=new google.maps.places.Autocomplete(input2)
+    function calculateDistance() {
+      var origin = document.getElementById('origin').value;
+      var destination = document.getElementById('destination').value;
+
+      var service = new google.maps.DistanceMatrixService();
+      service.getDistanceMatrix(
+        {
+          origins: [origin],
+          destinations: [destination],
+          travelMode: 'DRIVING',
+        },
+        function (response, status) {
+          if (status === 'OK') {
+            var distance = response.rows[0].elements[0].distance.text;
+            var duration = response.rows[0].elements[0].duration.text;
+            var result = `Distance: ${distance}<br> Duration: ${duration}`;
+      
+            document.getElementById('distance-result').innerHTML = result;
+
+            // Display the map with the route and directions
+            displayMap(origin, destination);
+            showImages(origin, destination); // Add this line to show images
+          } else {
+            document.getElementById('distance-result').innerHTML = 'Error: ' + status;
+          }
+        }
+      );
+    }
+
+    // Function to display the map with route and directions
+    function displayMap(origin, destination) {
+      var mapOptions = {
+        center: { lat: 0, lng: 0 },
+        zoom: 10,
+      };
+
+      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+      var directionsService = new google.maps.DirectionsService();
+      var directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
+
+      directionsService.route(
+        {
+          origin: origin,
+          destination: destination,
+          travelMode: 'DRIVING',
+        },
+        function (response, status) {
+          if (status === 'OK') {
+            directionsRenderer.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        }
+      );
+    }
+
+    // Function to show images
+    function showImages(origin, destination) {
+      var originImage = `https://maps.googleapis.com/maps/api/streetview?size=400x300&location=${encodeURIComponent(
+        origin
+      )}&key=AIzaSyCxACrlXZI3XbPbp-lcKjbfC7j8EONEu4Q`;
+      var destinationImage = `https://maps.googleapis.com/maps/api/streetview?size=400x300&location=${encodeURIComponent(
+        destination
+      )}&key=AIzaSyCxACrlXZI3XbPbp-lcKjbfC7j8EONEu4Q`;
+
+      var imagesHTML = `
+        <div class="col-md-6">
+          <h3>Origin Image:</h3>
+          <img src="${originImage}" alt="Origin Image" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+          <h3>Destination Image:</h3>
+          <img src="${destinationImage}" alt="Destination Image" class="img-fluid">
+        </div>
+      `;
+
+      document.getElementById('images').innerHTML = imagesHTML;
+    }
+    // Handle form submission
+    document.getElementById('distance-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      calculateDistance();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 100px;
+      color: white;
+      background-color: rgb(36, 34, 34);
+      border-radius:30px ;
+      
+    }
+    .b1{
+        
+        padding:5px;
+        background-color:rgb(247, 242, 242);
+        border: 2px solid black;
+        border-radius: 10px;
+        color: black;
+        width: 100px;
+        margin-left: 1000px;
+    }
+    .b2{
+       
+        padding:5px;
+        background-color:rgb(55, 173, 55);
+        border: 2px solid black;
+        border-radius: 10px;
+        color: black;
+        width: 100px;
+    }
+    body{background-image: url("i1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-size:100% 100%;
+  font-family: "Sofia", sans-serif;
+  
+}
+.card{
+  width:200px;
+  height: 200px;
+ margin-top: 200px;
+}
+.w3-container{
+  background-color: rgb(15, 15, 15);
+  
+}
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: rgb(241, 236, 235);
+  color: rgb(25, 175, 80);
+  margin-top: 100px;
+}
+
+  </style>
+  <!-- Hotjar Tracking Code for https://pujitha.co/ -->
+<script>
+  (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:3574004,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T4C9YHZYLJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T4C9YHZYLJ');
+</script>
+</head>
+<body>
+  <header class="w3-container w3-teal">
+    <center><h1 class="font-effect-fire">Mapping and Distance Finding</h1></center>
+    <a href="login.html"><button class="b1" id="login">Log In</button></a>
+  <a href="login.html"><button class="b2">Sign In</button></a>
+  </header>
+  <div class="container">
+    <div class="login-container shadow-lg">
+      <center><h2>Login</h2></center>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password"   required>
+        </div>
+        <center><button id="submit" type="submit" class="btn btn-primary">Submit</button></center>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get the values from the input fields
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      // Perform validation
+      if (email === "pujitha@gmail.com" && password === "123") {
+        alert("Login successful!");
+        window.location.href = "temp.html";
+        // Perform further actions, such as redirecting to another page
+      } else {
+        alert("Invalid email or password. Please try again.");
+      }
+      
+      // Reset the form
+      document.getElementById("loginForm").reset();
+    });
+  </script>
+  <footer>
+    <p> @PujithaMarella,Y20AIT467,Department of Information Technology,Bapatla Engineering college</p>
+   </footer>
+</body>
+</html>
